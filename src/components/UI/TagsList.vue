@@ -2,12 +2,12 @@
   <div class="tags-list">
     <div
       class="tag-item"
-      v-for="tag in items"
-      :key="tag"
-      @click="$emit('onTagClick', tag)"
+      v-for="item in items"
+      :key="item"
+      @click="$emit('onItemClick', item)"
       :class="{ isPreview: isPreview }"
     >
-      <span>{{ tag }}</span>
+      <span>{{ item }}</span>
     </div>
   </div>
 </template>
@@ -17,7 +17,11 @@ export default {
   props: {
     items: {
       type: Array,
-      required: true
+      reqired: true
+    },
+    isActive: {
+      type: Boolean,
+      default: false
     },
     isPreview: {
       type: Boolean,
@@ -40,16 +44,20 @@ export default {
   border-radius: 22px;
   user-select: none;
   cursor: pointer;
-  &:last-child {
-    margin-right: 0;
+  &.isActive {
+    background-color: #444ce0;
+    color: #fff;
   }
   &.isPreview {
     padding: 0;
-    cursor: default;
     color: #444ce0;
+    cursor: default;
     &:before {
       content: '#';
     }
+  }
+  &:last-child {
+    margin-right: 0;
   }
 }
 </style>
