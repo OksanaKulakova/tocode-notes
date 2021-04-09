@@ -14,7 +14,8 @@ export default {
   },
   methods: {
     onSubmit() {
-      console.log(this.value)
+      this.$emit('onSubmit', this.value)
+      this.value = ''
     }
   }
 }
