@@ -1,16 +1,26 @@
 <template>
   <div class="md-body">
-    <From @onSubmit="handleSubmit" />
+    <Form @onSubmit="handleSubmit" />
+    <List @onRemove="handleRemove" :items="notes" />
   </div>
 </template>
 
 <script>
-import From from '@/components/Notes/Form.vue'
+import Form from '@/components/Notes/Form.vue'
+import List from '@/components/Notes/List.vue'
 export default {
-  components: { From },
+  components: { Form, List },
+  data() {
+    return {
+      notes: ['task 1', 'task 2', 'task 3']
+    }
+  },
   methods: {
     handleSubmit(title) {
       console.log(title)
+    },
+    handleRemove(index) {
+      this.notes.splice(index, 1)
     }
   }
 }
