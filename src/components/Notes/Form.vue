@@ -19,8 +19,21 @@ export default {
     }
   },
   methods: {
+    getActiveTags() {
+      let tags = []
+      document.querySelectorAll("div.tag-item.isActive").forEach(e => tags.push(e.textContent))
+      return tags
+    },
+    cleanActiveTags() {
+      document.querySelectorAll("div.tag-item.isActive").forEach(e => e.classList.toggle("isActive"))
+    },
     onSubmit() {
-      this.$emit('onSubmit', this.value)
+      const note = {
+        title: this.value,
+        tags: this.getActiveTags()
+      }
+      this.cleanActiveTags()
+      this.$emit('onSubmit', note)
       this.value = ''
     },
     handleTagClick(event) {

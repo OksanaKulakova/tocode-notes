@@ -42,14 +42,10 @@ export default {
         this.notes = JSON.parse(localNotes)
       }
     },
-// * submit note
-handleSubmit(title) {
-  const note = {
-    title: title,
-    tags: []
-  }
-  this.notes.push(note)
-},
+    // * submit note
+    handleSubmit(note) {
+      this.notes.push(note)
+    },
     // * remove note
     handleRemove(index) {
       this.notes.splice(index, 1)
