@@ -23,8 +23,8 @@ export default {
       this.$emit('onSubmit', this.value)
       this.value = ''
     },
-    handleTagClick(tag) {
-      console.log(tag)
+    handleTagClick(event) {
+      event.target.parentElement.classList.toggle("isActive")
     }
   }
 }

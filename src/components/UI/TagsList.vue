@@ -4,8 +4,8 @@
       class="tag-item"
       v-for="item in items"
       :key="item"
-      @click="$emit('onItemClick', item)"
-      :class="{ isPreview: isPreview }"
+      @click="$emit('onItemClick', $event)"
+      :class="{ isPreview: isPreview, isActive: isActive }"
     >
       <span>{{ item }}</span>
     </div>
